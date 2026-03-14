@@ -5,6 +5,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    background: linear-gradient(180deg, #e5dfdf 0%, #ffffff 100%);
+}
+
 /* Start Posts Page CSS */
 
 .posts-container {
@@ -24,7 +28,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: blue;
+    background: linear-gradient(to bottom right, rgb(35, 87, 206),rgb(14, 68, 192));
 }
 .posts-header h1{
     color: white;
@@ -142,7 +146,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to bottom right, rgb(104, 104, 226),rgb(70, 70, 234));
+    background: linear-gradient(to bottom right, rgb(35, 87, 206),rgb(14, 68, 192));
 }
 .profile-header h1{
     color: white;
@@ -169,7 +173,7 @@
 
 .profile-top {
     height: 130px;
-    background: linear-gradient(to bottom right, rgb(83, 83, 255),rgb(0, 0, 125));
+    background: linear-gradient(to bottom right, rgb(73, 120, 230),rgb(12, 72, 211));
 }
 
 .profile-content {
@@ -231,10 +235,6 @@
     position: absolute;
     top: 80px;
     left: 20px;
-}
-
-.profile-body {
-    background: linear-gradient(180deg, #f4f4f4 0%, #ffffff 100%);
 }
 
 .skills {
@@ -371,4 +371,133 @@
 
 .del-btn:hover {
     cursor: pointer;
+}
+
+/* End Profile Page CSS */
+
+/* Start Login / register Page CSS */
+
+.login-container {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-areas: "header header header"
+                         "left body right";
+    grid-template-rows: 70px auto;
+    grid-template-columns: 690px auto 690px;
+}
+
+.login-header {
+    grid-area: header;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom right, rgb(35, 87, 206),rgb(14, 68, 192));
+}
+
+.login-header h1{
+    color: white;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.login-left {
+    grid-area: left;
+}
+
+.login-body {
+    grid-area: body;
+    border-radius: 5px;
+    margin-top: 70px;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 70px;
+}
+
+.login-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.login-top h2{
+    margin-top: 20px;
+}
+
+.login-top p{
+    margin-top: 10px;
+    color: grey;
+    font-size: 16px;
+}
+
+.login-top img{
+    width: 70px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.login-form form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.login-form label{
+    margin-left: 30px;
+    font-weight: 500;
+}
+
+.login-form input{
+    width: 480px;
+    margin-left: 30px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.login-form button{
+    height: 40px;
+    width: 400px;
+    margin-left: 70px;
+    background-color: rgb(45, 99, 224);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 25px;
+}
+
+.login-form button:hover {
+    cursor: pointer;
+    background-color: rgb(69, 125, 255);
+}
+
+.login-body hr{
+    margin-top: 25px;
+    border: 1px solid lightgray;
+    width: 480px;
+    margin-left: 28px;
+}
+
+.login-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-bottom h4{
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+.login-bottom a{
+    color: rgb(45, 91, 255);
+}
+
+.login-right {
+    grid-area: right;
 }

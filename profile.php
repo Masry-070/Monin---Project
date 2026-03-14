@@ -35,7 +35,7 @@
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>
-                <a href="#login"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+                <a href="login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
             </div>
         </div>
         <div class="profile-left"></div>

@@ -35,7 +35,7 @@
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>
-                <a href="#login"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+                <a href="login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
             </div>
         </div>
         <div class="posts-topbody">
@@ -49,7 +49,7 @@
             <div class="post-1">
                 <div class="pfp-info">
                     <a href="profile.php?id=<?= $post['user_id'] ?>">
-                        <img src="<?=$user['avatar'] ?>" alt="profilePicture-1">
+                        <img src="<?=$user['avatar'] ?>" alt="profilePicture">
                     </a>
                     <div class="profile-text">
                         <h3><?= $user['name'] ?></h3>
