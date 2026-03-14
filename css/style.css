@@ -70,7 +70,9 @@ body {
 .post-1,
 .post-2,
 .post-3 {
-    border: 1px solid grey;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     padding: 20px;
     width: 90%;
     height: 250px;
