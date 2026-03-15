@@ -1,4 +1,27 @@
-<?php ?>
+<?php
+
+    $message = "";
+    try {
+        $db=new PDO("mysql:host=localhost;dbname=mon-in","root","");
+    } catch(PDOException $e) {
+        die("Error:".$e->getMessage());
+    }
+
+    if (isset($_POST["login"])) {
+
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        $verify = $db->prepare("SELECT * FROM `registration-info` WHERE email = ? AND password = ?");
+        $verify->execute([$email, $password]);
+
+        if ($verify->rowCount() > 0) {
+            $message = "Succesfully Loggedin";
+        } else {
+            $message = "Incorrect Email or Password!";
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,16 +49,17 @@
                 <img src="img/IN.jpg" alt="IN">
                 <h2>Welcome Back</h2>
                 <p>Log in to your account</p>
+                <p><?php echo $message ?></p>
             </div>
             <div class="login-form">
-                <form action="">
+                <form method="POST" action="">
                     <label for="email">Email *</label>
                     <input type="text" id="email" name="email" required>
 
                     <label for="password">Password *</label>
                     <input type="password" id="password" name="password" required>
 
-                    <button type="submit">Sign In</button>
+                    <button name="login" type="submit">Sign In</button>
                 </form>
             </div>
             <hr>

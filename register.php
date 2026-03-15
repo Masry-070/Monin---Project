@@ -1,4 +1,28 @@
-<?php ?>
+<?php
+    $message = "";
+    try {
+        $db=new PDO("mysql:host=localhost;dbname=mon-in","root","");
+    } catch(PDOException $e) {
+        die("Error:".$e->getMessage());
+    }
+
+    if (isset($_POST["register"])) {
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $cPassword = $_POST["cPassword"];
+
+        if ($password == $cPassword) {
+            $verify = $db->prepare("INSERT INTO `registration-info`(`name`, `email`, `password`) VALUES (?,?,?)");
+            $verify->execute([$name, $email, $password]);
+
+            $message = "You can now Login through the login page!";
+        } else {
+            $message = "Passwords don't match!";
+        }
+
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +50,10 @@
                 <img src="img/IN.jpg" alt="IN">
                 <h2>Join LinkedPro</h2>
                 <p>Create your professional profile</p>
+                <p><?php echo $message ?></p>
             </div>
             <div class="login-form">
-                <form action="">
+                <form method="POST" action="">
                     <label for="fName">Full Name *</label>
                     <input type="text" id="fName" name="name" required>
 
@@ -39,9 +64,9 @@
                     <input type="password" id="password" name="password" required>
 
                     <label for="cPassword">Confirm Password *</label>
-                    <input type="password" id="cPassword" name="password" required>
+                    <input type="password" id="cPassword" name="cPassword" required>
                     
-                    <button type="submit">Create Account</button>
+                    <button name="register" type="submit">Create Account</button>
                 </form>
             </div>
             <hr>
