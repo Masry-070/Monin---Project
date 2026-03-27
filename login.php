@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     $message = "";
     try {
         $db=new PDO("mysql:host=localhost;dbname=mon-in","root","");
@@ -12,11 +12,13 @@
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        $verify = $db->prepare("SELECT * FROM `registration-info` WHERE email = ? AND password = ?");
+        $verify = $db->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
         $verify->execute([$email, $password]);
-
+        $user=$verify->fetch();
         if ($verify->rowCount() > 0) {
             $message = "Succesfully Loggedin";
+            $_SESSION['user_id']=$user['id'];
+            header(header:"Location: posts.php");
         } else {
             $message = "Incorrect Email or Password!";
         }

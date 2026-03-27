@@ -13,7 +13,7 @@
         $cPassword = $_POST["cPassword"];
 
         if ($password == $cPassword) {
-            $verify = $db->prepare("INSERT INTO `registration-info`(`name`, `email`, `password`) VALUES (?,?,?)");
+            $verify = $db->prepare("INSERT INTO `users`(`name`, `email`, `password`) VALUES (?,?,?)");
             $verify->execute([$name, $email, $password]);
 
             $message = "You can now Login through the login page!";

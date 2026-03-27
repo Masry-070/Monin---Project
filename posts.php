@@ -1,4 +1,5 @@
 <?php
+session_start();
     try {
         $db=new PDO("mysql:host=localhost;dbname=mon-in","root","");
     } catch(PDOException $e) {
@@ -9,11 +10,16 @@
     $q->execute();
     $posts=$q->fetchAll(PDO::FETCH_ASSOC);
 
+    $user=getUser($_SESSION['user_id'],$db);
     function getUser($id,$db)
     {
          $q=$db->prepare("SELECT * FROM users WHERE id=$id");
         $q->execute();
         return $q->fetch(PDO::FETCH_ASSOC);
+    }
+
+    if (isset($_POST["newPost"])) {
+        $postTxt = $_POST["newPostTxt"];
     }
 ?>
 
@@ -37,6 +43,10 @@
             </div>
         </div>
         <div class="posts-topbody">
+            <form method="POST" action="">
+                <input type="text" name="newPostTxt" required placeholder="Type here your post:">
+                <button type="submit" name="newPost">Submit</button>
+            </form>
             <h2>Recent Posts</h2>
         </div>
         <div class="posts-body">
