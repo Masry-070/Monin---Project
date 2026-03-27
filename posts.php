@@ -29,7 +29,7 @@
 <body>
     <div class="posts-container">
         <div class="posts-header">
-                <h1>MonIn</h1>
+                <a href="posts.php"><h1>MonIn</h1></a>
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>

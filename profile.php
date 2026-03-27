@@ -31,7 +31,7 @@
 <body class="profile-body">
     <div class="profile-container">
         <div class="profile-header">
-            <h1>MonIn</h1>
+            <a href="posts.php"><h1>MonIn</h1></a>
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>

@@ -156,6 +156,18 @@ body {
     font-weight: bold;
 }
 
+.profile-header a{
+    text-decoration: none;
+}
+
+.posts-header a{
+    text-decoration: none;
+}
+
+.login-header a{
+    text-decoration: none;
+}
+
 .profile-body-container {
     display: flex;
     flex-direction: column;
