@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
-<body>
+<body class="reg-body">
 
     <div class="login-container">
         <div class="login-header">

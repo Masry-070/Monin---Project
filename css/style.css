@@ -14,7 +14,7 @@ body {
 .posts-container {
     display: grid;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     grid-template-areas: "header"
                          "top-body"
                          "body";
@@ -135,7 +135,7 @@ body {
 .profile-container {
     display: grid;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     grid-template-areas: "header header header"
                          "left body right";
     grid-template-rows: 70px auto;
@@ -377,12 +377,12 @@ body {
 
 /* End Profile Page CSS */
 
-/* Start Login / register Page CSS */
+/* Start Login / Register Page CSS */
 
 .login-container {
     display: grid;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     grid-template-areas: "header header header"
                          "left body right";
     grid-template-rows: 70px auto;
@@ -502,4 +502,16 @@ body {
 
 .login-right {
     grid-area: right;
+}
+
+ /*Start @media Login / Registration page*/
+@media (max-width: 1540px) {
+    .login-container {
+        grid-template-rows: 70px auto;
+        grid-template-columns: 500px auto 500px;
+    }
+    .login-body {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
 }

@@ -9,8 +9,6 @@
     $q->execute();
     $posts=$q->fetchAll(PDO::FETCH_ASSOC);
 
-    //var_dump($posts);
-
     function getUser($id,$db)
     {
          $q=$db->prepare("SELECT * FROM users WHERE id=$id");
