@@ -1,4 +1,5 @@
 <?php
+session_start();
     try {
         $db=new PDO("mysql:host=localhost;dbname=mon-in","root","");
     } catch(PDOException $e) {
@@ -10,13 +11,22 @@
     $q->execute();
     $posts=$q->fetchAll(PDO::FETCH_ASSOC);
 
+    $id = null;
+
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    } else if (isset($_SESSION['user_id'])) {
+        $id = $_SESSION['user_id'];
+    }
+
     function getUser($id,$db)
     {
          $q=$db->prepare("SELECT * FROM users WHERE id=$id");
         $q->execute();
         return $q->fetch(PDO::FETCH_ASSOC);
     }
-    $user=getUser($_GET['id'],$db);
+
+    $user= getUser($id,$db);
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +56,7 @@
                     <img src="<?= $user['avatar'] ?>" class="profile-picture">
                     <h3><?= $user['name'] ?></h3>
                     <p><?= $user['headline'] ?></p>
-                    <button><i class="bi bi-pencil"></i> Edit Profile</button>
+                    <button id="editBtn" ><i class="bi bi-pencil"></i> Edit Profile</button>
                     <div class="profile-about">
                         <h4>About</h4>
                         <hr>
@@ -99,5 +109,9 @@
         </div>
         <div class="profile-right"></div>
     </div>
+
+    <div class="editForm">form div</div>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -10,7 +10,19 @@ session_start();
     $q->execute();
     $posts=$q->fetchAll(PDO::FETCH_ASSOC);
 
-    $user=getUser($_SESSION['user_id'],$db);
+    if (isset($_POST['newPost'])) {
+        $postTxt = $_POST['newPostTxt'];
+        $userId = $_SESSION['user_id'];
+
+        $newPost = $db->prepare("INSERT INTO posts (user_id, content, created_at) VALUES (?,?,NOW())");
+        $newPost->execute([$userId, $postTxt]);
+    }
+
+    $user = null;
+    if (isset($_SESSION['user_id'])) {
+        $user = getUser($_SESSION['user_id'], $db);
+    }
+
     function getUser($id,$db)
     {
          $q=$db->prepare("SELECT * FROM users WHERE id=$id");
