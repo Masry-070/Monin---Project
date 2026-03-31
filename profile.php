@@ -27,6 +27,15 @@ session_start();
     }
 
     $user= getUser($id,$db);
+
+    if (isset($_POST['save'])) {
+        $name = $_POST['name'];
+        $headline = $_POST['headline'];
+        $about = $_POST['about'];
+
+        $update = $db->prepare("UPDATE users SET name = ?, headline = ?, about = ? WHERE id = ?");
+        $update->execute([$name, $headline, $about, $id]);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -110,7 +119,23 @@ session_start();
         <div class="profile-right"></div>
     </div>
 
-    <div class="editForm">form div</div>
+    <div id="formPopup">
+        <h1 id="form-h1">Edit Your Profile</h1>
+        <hr>
+        <form class="updateForm" method="POST" action="">
+            <label for="name">Name</label>
+            <input id="inputName" type="text" name="name" placeholder="Johannes Willem">
+
+            <label for="headline">Headline</label>
+            <input type="text" name="headline" placeholder="Product Manager; ex-Google">
+
+            <label for="about">About</label>
+            <input type="text" name="about" placeholder="I own google">
+
+            <button type="submit" name="save">Save</button>
+            <button id="closeBtn">Close</button>
+        </form>
+    </div>
 
     <script src="script.js"></script>
 </body>
