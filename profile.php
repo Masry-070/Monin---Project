@@ -35,6 +35,8 @@ session_start();
 
         $update = $db->prepare("UPDATE users SET name = ?, headline = ?, about = ? WHERE id = ?");
         $update->execute([$name, $headline, $about, $id]);
+
+        header(header:"Location: profile.php");
     }
 ?>
 
