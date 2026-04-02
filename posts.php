@@ -6,9 +6,14 @@ session_start();
         die("Error:".$e->getMessage());
     }
 
-    $q=$db->prepare("SELECT * FROM posts");
+    $q=$db->prepare("SELECT * FROM posts ORDER BY created_at DESC");
     $q->execute();
     $posts=$q->fetchAll(PDO::FETCH_ASSOC);
+
+    if (isset($_POST['logout'])) {
+        session_destroy();
+        header("Location: login.php");
+    };
 
     if (isset($_POST['newPost'])) {
         $postTxt = $_POST['newPostTxt'];
@@ -16,6 +21,8 @@ session_start();
 
         $newPost = $db->prepare("INSERT INTO posts (user_id, content, created_at) VALUES (?,?,NOW())");
         $newPost->execute([$userId, $postTxt]);
+
+        header(header:"Location: posts.php");
     }
 
     $user = null;
@@ -28,10 +35,6 @@ session_start();
          $q=$db->prepare("SELECT * FROM users WHERE id=$id");
         $q->execute();
         return $q->fetch(PDO::FETCH_ASSOC);
-    }
-
-    if (isset($_POST["newPost"])) {
-        $postTxt = $_POST["newPostTxt"];
     }
 ?>
 
@@ -51,7 +54,13 @@ session_start();
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>
-                <a href="login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <form method="POST" action="">
+                        <button name="logout" class="logout-button"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                    </form>
+                <?php else: ?>
+                    <a href="login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="posts-topbody">
@@ -74,7 +83,7 @@ session_start();
                     <div class="profile-text">
                         <h3><?= $user['name'] ?></h3>
                         <p><?=$user['headline'] ?></p>
-                        <p><?=$post['created_at'] ?></p>
+                        <p><?= date('d-m-Y H:i', strtotime($post['created_at'])) ?></p>
                     </div>
                 </div>
                 <div class="post-info">

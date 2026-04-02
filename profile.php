@@ -6,11 +6,6 @@ session_start();
         die("Error:".$e->getMessage());
     }
 
-    $q=$db->prepare("SELECT * FROM posts WHERE user_id=:id");
-    $q->bindParam(':id',$_GET['id']);
-    $q->execute();
-    $posts=$q->fetchAll(PDO::FETCH_ASSOC);
-
     $id = null;
 
     if (isset($_GET['id'])) {
@@ -18,6 +13,11 @@ session_start();
     } else if (isset($_SESSION['user_id'])) {
         $id = $_SESSION['user_id'];
     }
+
+    $q=$db->prepare("SELECT * FROM posts WHERE user_id=:id");
+    $q->bindParam(':id',$_GET['id']);
+    $q->execute();
+    $posts=$q->fetchAll(PDO::FETCH_ASSOC);
 
     function getUser($id,$db)
     {
@@ -32,11 +32,21 @@ session_start();
         $name = $_POST['name'];
         $headline = $_POST['headline'];
         $about = $_POST['about'];
+        $skills = $_POST['skills'];
+        $interests = $_POST['interests'];
 
-        $update = $db->prepare("UPDATE users SET name = ?, headline = ?, about = ? WHERE id = ?");
-        $update->execute([$name, $headline, $about, $id]);
+        $update = $db->prepare("UPDATE users SET name = ?, headline = ?, about = ?, skills = ?, interests = ? WHERE id = ?");
+        $update->execute([$name, $headline, $about, $skills, $interests, $id]);
 
         header(header:"Location: profile.php");
+    }
+
+    if (isset($_POST['delBtn'])) {
+        $delPostId = $_POST['post_id'];
+
+        $delPost = $db->prepare("DELETE FROM posts WHERE id = ? AND user_id = ?");
+        $delPost->execute([$delPostId, $_SESSION['user_id']]);
+        header("Location: profile.php?id=" . $id);
     }
 ?>
 
@@ -56,7 +66,11 @@ session_start();
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>
-                <a href="login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="?action=logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                <?php else: ?>
+                    <a href="login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="profile-left"></div>
@@ -113,7 +127,10 @@ session_start();
                 <div class="likesp">
                     <button class="like-btn"><i class="bi bi-hand-thumbs-up"></i></button>
                     <p>5</p>
-                    <button class="del-btn"><i class="bi bi-trash"></i> Delete</button>
+                    <form method="POST" action="">
+                        <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
+                        <button name="delBtn" class="del-btn"><i class="bi bi-trash"></i> Delete</button>
+                    </form>
                 </div>
                 <?php endforeach?>
             </div>
@@ -133,6 +150,12 @@ session_start();
 
             <label for="about">About</label>
             <input type="text" name="about" placeholder="I own google">
+
+            <label for="about">Skills (gescheiden door komma's)</label>
+            <input type="text" name="skills" placeholder="PHP">
+            
+            <label for="about">Interests (gescheiden door komma's)</label>
+            <input type="text" name="interests" placeholder="Fishing">
 
             <button type="submit" name="save">Save</button>
             <button id="closeBtn">Close</button>

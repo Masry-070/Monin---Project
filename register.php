@@ -12,15 +12,15 @@
         $password = $_POST["password"];
         $cPassword = $_POST["cPassword"];
 
-        if ($password == $cPassword) {
+        if ($password != $cPassword) {
+            $message = "Passwords don't match!";
+        } else if(strlen($password) < 6){
+            $message = "Password needs to be atleast 6 characters long!";
+        } else {
             $verify = $db->prepare("INSERT INTO `users`(`name`, `email`, `password`) VALUES (?,?,?)");
             $verify->execute([$name, $email, $password]);
-
             $message = "You can now Login through the login page!";
-        } else {
-            $message = "Passwords don't match!";
         }
-
     }
 ?>
 
@@ -41,7 +41,11 @@
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>
-                <a href="login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="?action=logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                <?php else: ?>
+                    <a href="login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
+                <?php endif; ?>
             </div>
         </div>
         <div class="login-left"></div>
@@ -61,7 +65,7 @@
                     <input type="text" id="email" name="email" required>
 
                     <label for="password">Password *</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" minlength="6" required>
 
                     <label for="cPassword">Confirm Password *</label>
                     <input type="password" id="cPassword" name="cPassword" required>
