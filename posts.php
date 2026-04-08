@@ -46,11 +46,12 @@ session_start();
     <title>Posts</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="js/posts.js" defer></script>
 </head>
 <body>
     <div class="posts-container">
         <div class="posts-header">
-                <a href="posts.php"><h1>MonIn</h1></a>
+                <button id="switch-btn"><h1>MonIn</h1></button>
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>
@@ -68,14 +69,14 @@ session_start();
                 <input type="text" name="newPostTxt" required placeholder="Type here your post:">
                 <button type="submit" name="newPost">Submit</button>
             </form>
-            <h2>Recent Posts</h2>
+            <h2 id="topH2">Recent Posts</h2>
         </div>
         <div class="posts-body">
 
             <?php foreach($posts as $post):
                 $user=getUser($post['user_id'],$db)?>
 
-            <div class="post-1">
+            <div id="posts" class="post-1">
                 <div class="pfp-info">
                     <a href="profile.php?id=<?= $post['user_id'] ?>">
                         <img src="<?=$user['avatar'] ?>" alt="profilePicture">
@@ -100,6 +101,5 @@ session_start();
     </div>
 
 
-    <script src="js/script.js"></script>
 </body>
 </html>

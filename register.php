@@ -20,6 +20,7 @@
             $verify = $db->prepare("INSERT INTO `users`(`name`, `email`, `password`) VALUES (?,?,?)");
             $verify->execute([$name, $email, $password]);
             $message = "You can now Login through the login page!";
+            header(header:"Location: login.php");
         }
     }
 ?>

@@ -12,6 +12,15 @@ body {
 
 /* Start Posts Page CSS */
 
+#switch-btn {
+    background: none;
+    border: none;
+}
+
+#switch-btn:hover {
+    cursor: pointer;
+}
+
 .posts-container {
     display: grid;
     width: 100vw;
@@ -117,9 +126,7 @@ body {
     gap: 25px;
 }
 
-.post-1,
-.post-2,
-.post-3 {
+.post-1 {
     border: 1px solid #e0e0e0;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);

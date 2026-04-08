@@ -162,6 +162,6 @@ session_start();
         </form>
     </div>
 
-    <script src="script.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 </html>
