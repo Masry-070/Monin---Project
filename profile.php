@@ -48,6 +48,11 @@ session_start();
         $delPost->execute([$delPostId, $_SESSION['user_id']]);
         header("Location: profile.php?id=" . $id);
     }
+
+    if (isset($_POST['logout'])) {
+        session_destroy();
+        header("Location: login.php");
+    };
 ?>
 
 <!DOCTYPE html>

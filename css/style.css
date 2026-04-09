@@ -10,7 +10,30 @@ body {
     overflow-x: hidden;
 }
 
+body.dark-mode {
+    background: linear-gradient(180deg, #2b2b2b 0%, #1a1a1a 100%);
+}
+
 /* Start Posts Page CSS */
+
+.dark-mode .post-1 {
+    background-color: black;
+    color: white;
+}
+
+.dark-mode #topH2 {
+    color: white;
+}
+
+.dark-mode #sbtn {
+    background-color: blue;
+    color: white;
+}
+
+.dark-mode #sbtn:hover {
+    color: blue;
+    background: white;
+}
 
 #switch-btn {
     background: none;

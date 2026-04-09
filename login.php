@@ -23,6 +23,11 @@
             $message = "Incorrect Email or Password!";
         }
     }
+
+    if (isset($_POST['logout'])) {
+        session_destroy();
+        header("Location: login.php");
+    };
 ?>
 
 <!DOCTYPE html>

@@ -30,9 +30,8 @@ session_start();
         $user = getUser($_SESSION['user_id'], $db);
     }
 
-    function getUser($id,$db)
-    {
-         $q=$db->prepare("SELECT * FROM users WHERE id=$id");
+    function getUser($id,$db) {
+        $q=$db->prepare("SELECT * FROM users WHERE id=$id");
         $q->execute();
         return $q->fetch(PDO::FETCH_ASSOC);
     }
@@ -67,7 +66,7 @@ session_start();
         <div class="posts-topbody">
             <form method="POST" action="">
                 <input type="text" name="newPostTxt" required placeholder="Type here your post:">
-                <button type="submit" name="newPost">Submit</button>
+                <button id="sbtn" type="submit" name="newPost">Submit</button>
             </form>
             <h2 id="topH2">Recent Posts</h2>
         </div>
@@ -76,13 +75,13 @@ session_start();
             <?php foreach($posts as $post):
                 $user=getUser($post['user_id'],$db)?>
 
-            <div id="posts" class="post-1">
+            <div class="post-1">
                 <div class="pfp-info">
                     <a href="profile.php?id=<?= $post['user_id'] ?>">
                         <img src="<?=$user['avatar'] ?>" alt="profilePicture">
                     </a>
                     <div class="profile-text">
-                        <h3><?= $user['name'] ?></h3>
+                        <h3 ><?= $user['name'] ?></h3>
                         <p><?=$user['headline'] ?></p>
                         <p><?= date('d-m-Y H:i', strtotime($post['created_at'])) ?></p>
                     </div>
