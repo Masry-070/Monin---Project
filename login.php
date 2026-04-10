@@ -43,7 +43,7 @@
 
     <div class="login-container">
         <div class="login-header">
-            <a href="posts.php"><h1>MonIn</h1></a>
+            <button id="switch-btn"><h1>MonIn</h1></button>
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>
@@ -82,6 +82,6 @@
         </div>
         <div class="login-right"></div>
     </div>
-    
+    <script src="js/posts.js" defer></script>
 </body>
 </html>

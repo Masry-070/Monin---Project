@@ -72,7 +72,9 @@ session_start();
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="?action=logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                    <form method="POST" action="">
+                        <button name="logout" class="logout-button"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                    </form>
                 <?php else: ?>
                     <a href="login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
                 <?php endif; ?>

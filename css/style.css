@@ -86,6 +86,17 @@ body.dark-mode {
     background: linear-gradient(to bottom right, rgb(12, 72, 211),rgb(5, 43, 132));
 }
 
+.dark-mode .login-body {
+    background: linear-gradient(to bottom right, rgb(12, 72, 211),rgb(5, 43, 132));
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+    color: white;
+}
+
+.dark-mode .login-form input {
+    background: linear-gradient(to bottom right, rgb(45, 105, 245), rgb(20, 65, 170));
+    color: white;
+}
+
 #switch-btn {
     background: none;
     border: none;

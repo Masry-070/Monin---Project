@@ -43,12 +43,14 @@
 
     <div class="login-container">
         <div class="login-header">
-            <a href="posts.php"><h1>MonIn</h1></a>
+            <button id="switch-btn"><h1>MonIn</h1></button>
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="?action=logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                    <form method="POST" action="">
+                        <button name="logout" class="logout-button"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                    </form>
                 <?php else: ?>
                     <a href="login.php"><i class="bi bi-box-arrow-in-left"></i> Login</a>
                 <?php endif; ?>
@@ -86,6 +88,6 @@
         </div>
         <div class="login-right"></div>
     </div>
-    
+    <script src="js/posts.js" defer></script>
 </body>
 </html>
