@@ -10,6 +10,7 @@ body {
     overflow-x: hidden;
 }
 
+
 body.dark-mode {
     background: linear-gradient(180deg, #2b2b2b 0%, #1a1a1a 100%);
 }
@@ -17,7 +18,7 @@ body.dark-mode {
 /* Start Posts Page CSS */
 
 .dark-mode .post-1 {
-    background-color: black;
+    background-color: rgb(69, 69, 69);
     color: white;
 }
 
@@ -33,6 +34,42 @@ body.dark-mode {
 .dark-mode #sbtn:hover {
     color: blue;
     background: white;
+}
+
+.dark-mode #newpostinpt {
+    background-color: rgb(69, 69, 69);
+}
+
+.dark-mode #newpostinpt::placeholder {
+    color: white;
+}
+
+.dark-mode .profile-top {
+    background: linear-gradient(to bottom right, rgb(12, 72, 211),rgb(5, 43, 132));
+}
+
+.dark-mode .profile-content h3 {
+    color: white;
+}
+
+.dark-mode .profile-info {
+    color: white;
+    background: rgb(69, 69, 69);
+}
+
+.dark-mode .skills {
+    background: rgb(69, 69, 69);
+    color: white;
+}
+
+.dark-mode .interests {
+    background: rgb(69, 69, 69);
+    color: white;
+}
+
+.dark-mode .posts {
+    background: rgb(69, 69, 69);
+    color: white;
 }
 
 #switch-btn {

@@ -67,7 +67,7 @@ session_start();
 <body class="profile-body">
     <div class="profile-container">
         <div class="profile-header">
-            <a href="posts.php"><h1>MonIn</h1></a>
+            <button id="switch-btn"><h1>MonIn</h1></button>
             <div class="header-nav">
                 <a href="posts.php"><i class="bi bi-house"></i> Home</a>
                 <a href="profile.php"><i class="bi bi-person"></i> Profile</a>
@@ -168,5 +168,6 @@ session_start();
     </div>
 
     <script src="js/profile.js"></script>
+    <script src="js/posts.js"></script>
 </body>
 </html>

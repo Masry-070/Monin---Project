@@ -65,7 +65,7 @@ session_start();
         </div>
         <div class="posts-topbody">
             <form method="POST" action="">
-                <input type="text" name="newPostTxt" required placeholder="Type here your post:">
+                <input id="newpostinpt" type="text" name="newPostTxt" required placeholder="Type here your post:">
                 <button id="sbtn" type="submit" name="newPost">Submit</button>
             </form>
             <h2 id="topH2">Recent Posts</h2>
