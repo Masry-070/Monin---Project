@@ -18,7 +18,7 @@ body.dark-mode {
 /* Start Posts Page CSS */
 
 .dark-mode .post-1 {
-    background-color: rgb(69, 69, 69);
+    background: linear-gradient(to bottom right, rgb(12, 72, 211),rgb(5, 43, 132));
     color: white;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
 }
@@ -38,8 +38,8 @@ body.dark-mode {
 }
 
 .dark-mode #newpostinpt {
-    background-color: rgb(69, 69, 69);
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+    background: linear-gradient(to bottom right, rgb(12, 72, 211),rgb(5, 43, 132));
 }
 
 .dark-mode #newpostinpt::placeholder {
@@ -56,24 +56,24 @@ body.dark-mode {
 
 .dark-mode .profile-info {
     color: white;
-    background: rgb(69, 69, 69);
+    background: linear-gradient(to bottom right, rgb(12, 72, 211),rgb(5, 43, 132));
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
 }
 
 .dark-mode .skills {
-    background: rgb(69, 69, 69);
+    background: linear-gradient(to bottom right, rgb(12, 72, 211),rgb(5, 43, 132));
     color: white;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
 }
 
 .dark-mode .interests {
-    background: rgb(69, 69, 69);
+    background: linear-gradient(to bottom right, rgb(12, 72, 211),rgb(5, 43, 132));
     color: white;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
 }
 
 .dark-mode .posts {
-    background: rgb(69, 69, 69);
+    background: linear-gradient(to bottom right, rgb(12, 72, 211),rgb(5, 43, 132));
     color: white;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
 }
